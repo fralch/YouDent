@@ -5,9 +5,9 @@ import {
     Modal, Alert, Linking, Touchable
 } from 'react-native';
 import DateTimePicker , { DateTimePickerEvent } from '@react-native-community/datetimepicker'
-import { useNavigation } from '@react-navigation/native';
 
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import BottonNavigationBar from './bottonNavigationBar';
 
 export default function Calendar() {
     const [modalVisible, setModalVisible] = React.useState(false);
@@ -142,6 +142,9 @@ export default function Calendar() {
                         })
                     }
                 </ScrollView>
+
+                <BottonNavigationBar />
+
             </View>
         </View>
     )
