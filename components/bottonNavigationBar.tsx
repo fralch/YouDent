@@ -5,19 +5,32 @@ import {
     Modal, Alert, Linking, Touchable
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
+import { storeSesion, getSesion, removeSesion } from '../hooks/handleSession';
 import { Entypo, FontAwesome, FontAwesome5  } from '@expo/vector-icons';
 
-export default function BottonNavigationBar() {
+export default function BottonNavigationBar({ruta}: {ruta: string}) {
+
+    
+
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={() => { }}>
-                <Entypo name="home" size={24} color="white" />
-                <Text style={styles.text}>Home</Text>
+            <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('Home' as never);}}>
+                {
+                    ruta === 'Home' ?
+                        <><Entypo name="home" size={24} color="#55DAFF" /><Text style={[styles.text, {color:"#55DAFF"}]}>Home</Text></>
+                        :
+                        <><Entypo name="home" size={24} color="white" /><Text  style={styles.text} >Home</Text></>
+                }
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => { }}>
-                <FontAwesome5 name="calendar-day" size={24} color="#55DAFF" />
-                <Text style={[styles.text, {color:"#55DAFF"}]}>Calendar</Text>
+            <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Calendar' as never); }}>
+                {
+                    ruta === 'Calendar' ?
+                        <><FontAwesome5 name="calendar-day" size={24} color="#55DAFF" /><Text style={[styles.text, {color:"#55DAFF"}]}>Calendario</Text></>
+                        :
+                        <><FontAwesome5 name="calendar-day" size={24} color="white" /><Text  style={styles.text}  >Calendario</Text></>
+                        
+                }
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => { }}>
                 <FontAwesome name="user" size={24} color="white" />

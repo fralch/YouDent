@@ -11,9 +11,23 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false}} />
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false}} /> 
+      <Stack.Navigator initialRouteName="Calendar">
+        <Stack.Screen 
+          name="Calendar" 
+          component={Calendar} 
+          options={{ 
+            headerShown: false, 
+            animation: 'slide_from_right',
+          }} 
+         />
+        <Stack.Screen 
+          name="Home" 
+          component={Home} 
+          options={{ 
+            headerShown: false, 
+            animation: 'slide_from_left',
+          }} 
+          /> 
       </Stack.Navigator>
     </NavigationContainer>
   ); 
