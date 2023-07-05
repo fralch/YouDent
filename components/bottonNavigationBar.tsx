@@ -32,9 +32,14 @@ export default function BottonNavigationBar({ruta}: {ruta: string}) {
                         
                 }
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => { }}>
-                <FontAwesome name="user" size={24} color="white" />
-                <Text style={styles.text}>Paciente</Text>
+            <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('Patient' as never);}}>
+              {
+                    ruta === 'Patient' ?
+                        <><FontAwesome name="user" size={24} color="#55DAFF" /><Text style={[styles.text, {color:"#55DAFF"}]}>Paciente</Text></>
+                        :
+                        <><FontAwesome name="user" size={24} color="white" /><Text  style={styles.text}  >Paciente</Text></>
+                        
+              }
             </TouchableOpacity>
         </View>
     )
