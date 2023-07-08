@@ -7,19 +7,15 @@ import {
 import { storeSesion, getSesion, removeSesion } from '../hooks/handleSession';
 import { Entypo, FontAwesome, FontAwesome5, Foundation } from '@expo/vector-icons';
 import BottonNavigationBar from './bottonNavigationBar';
-import { Table, Row, Cell } from 'react-native-table-component';
 
 export default function Patient() {
     const ancho = Dimensions.get('window').width;
-    const tabla_datos_head = {
-        tableHead: ['Paciente', 'Ultima visita', 'Otros'],
-        withArr: [ancho * 0.3, ancho * 0.3, ancho * 0.2]
-    }
-    const tabla_datos_body = [
-        ['Jose Sanchez Lopez', '02-03-2023', 'otro'],
-        ['Jose Sanchez Lopez', '02-03-2023', 'otro'],
-        ['Jose Sanchez Lopez', '02-03-2023', 'otro'],
-        ['Jose Sanchez Lopez', '02-03-2023', 'otro'],
+   
+    const list_datos_body = [
+        ['Jose Sanchez Lopez', '02-03-2023'],
+        ['Andres Meza Rojas', '02-03-2023'],
+        ['Ana Mendoza Diaz', '02-03-2023'],
+        ['Jose Sanchez Lopez', '02-03-2023'],
     ]
 
 
@@ -40,21 +36,24 @@ export default function Patient() {
                 </View>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ fontSize: 20, color: '#fff' }}>Pacientes</Text>
-                    <Table borderStyle={{ borderWidth: 2, borderColor: '#888' }}>
-                        <Row data={tabla_datos_head.tableHead} widthArr={tabla_datos_head.withArr} style={styles.head} textStyle={styles.text} />
-                            {
-                                tabla_datos_body.map((rowData, index) => (
-                                    <TouchableOpacity key={index} onPress={() => { }} style={{  borderColor: '#888', borderWidth: 1}}>
-                                        <Row
-                                            key={index}
-                                            data={rowData}
-                                            widthArr={tabla_datos_head.withArr}
-                                            style={[styles.row , index % 2 ? { backgroundColor: '#444' } : null]}
-                                        />
+                    {
+                        list_datos_body.map((item, index) => (
+                            <View key={index} style={{ width: ancho - 20, height: 70, backgroundColor: '#555', borderRadius: 10, marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <View style={{ width: '70%', height: '100%', justifyContent: 'center', marginLeft: 10 }}>
+                                    <Text style={{ fontSize: 16, fontWeight: 'bold', color:"#fff" }}>{item[0]}</Text>
+                                    <Text style={{ fontSize: 14 , color:"#fff"}}>{item[1]}</Text>
+                                </View>
+                                <View style={{ width: '30%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: '#444', alignItems: 'center', justifyContent: 'center' }}>
+                                        <FontAwesome name="eye" size={24} color="#fff" />
                                     </TouchableOpacity>
-                                ))
-                            }
-                    </Table>
+                                </View>
+                            </View>
+                        ))
+
+
+
+                    }
 
                 </View>
             </View>
@@ -75,7 +74,5 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
     },
-    head: { height: 40, backgroundColor: '#444' },
-    text: { margin: 6 },
-    row: { flexDirection: 'row', backgroundColor: '#444'}
+    text: { margin: 6 , color: '#fff'},
 });
