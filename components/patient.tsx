@@ -5,10 +5,12 @@ import {
     Modal, Alert, Linking, Touchable, Dimensions
 } from 'react-native';
 import { storeSesion, getSesion, removeSesion } from '../hooks/handleSession';
+import { useNavigation } from '@react-navigation/native';
 import { Entypo, FontAwesome, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import BottonNavigationBar from './bottonNavigationBar';
 
 export default function Patient() {
+    const navigation = useNavigation();
     const ancho = Dimensions.get('window').width;
 
     const list_datos_body = [
@@ -69,17 +71,15 @@ export default function Patient() {
                                         <Text style={{ fontSize: 14, color: "#fff" }}>Ultima visita:  {item[1]}</Text>
                                     </View>
                                     <View style={{ width: '30%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                                        <TouchableOpacity >
+                                        <TouchableOpacity 
+                                            onPress={() => {navigation.navigate('DetailsPatient' as never);}}
+                                        >
                                             <AntDesign name="rightcircle" size={25} color="#333" />
                                         </TouchableOpacity>
                                     </View>
                                 </View>
                             ))
-
-
-
                         }
-
                     </View>
                 </ScrollView>
 
@@ -104,4 +104,5 @@ const styles = StyleSheet.create({
 
     },
     text: { margin: 6, color: '#fff' },
+    
 });

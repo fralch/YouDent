@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Calendar from './components/calendar';
 import Home from './components/home';
 import Patient from './components/patient';
+import DetailsPatient from './components/detail';
 
 
 export default function App() {
@@ -36,7 +37,8 @@ export default function App() {
             animation: 'slide_from_right',
           }}
         />
-      </Stack.Navigator>
+        <Stack.Screen name="DetailsPatient" component={DetailsPatient} options={{headerShown: false}}/>
+        </Stack.Navigator>
     </NavigationContainer>
   ); 
 }
