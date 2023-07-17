@@ -7,6 +7,7 @@ import Calendar from './components/calendar';
 import Home from './components/home';
 import Patient from './components/patient';
 import DetailsPatient from './components/detail';
+import Tooth from './components/tooth';
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
           }}
         />
         <Stack.Screen name="DetailsPatient" component={DetailsPatient} options={{headerShown: false}}/>
+        <Stack.Screen name="Tooth" component={Tooth} options={{headerShown: false}}/>
         </Stack.Navigator>
     </NavigationContainer>
   ); 
